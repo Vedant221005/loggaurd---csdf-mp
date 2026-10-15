@@ -1,0 +1,6 @@
+Oct 15 10:22:45 workstation systemd[500]: Started Daily Cleanup service
+Oct 15 10:23:45 workstation systemd[501]: Failed to start backup service
+Oct 15 10:24:45 workstation systemd[502]: Failed to start backup service
+Oct 15 10:25:45 workstation systemd[503]: Failed to start backup service
+Oct 15 10:26:45 workstation kernel: warning: disk usage is above 80 percent
+this record has no timestamp and is retained for review

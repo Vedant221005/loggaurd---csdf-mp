@@ -1,0 +1,10 @@
+"use client";
+import { useRef, useState } from "react";
+import { FileUp, LoaderCircle } from "lucide-react";
+import { uploadLog, apiError } from "../../lib/api";
+export function LogUploader({ onComplete }: { onComplete: (id:string)=>void }) {
+  const ref = useRef<HTMLInputElement>(null); const [file,setFile] = useState<File|null>(null); const [busy,setBusy]=useState(false); const [error,setError]=useState("");
+  async function submit() { if (!file) return; setBusy(true); setError(""); try { const result=await uploadLog(file); onComplete(result.analysis_id); } catch(e) { setError(apiError(e)); } finally { setBusy(false); } }
+  function choose(candidate: File|null) { if (!candidate) return; if (![".log",".txt",".csv",".json"].some(x=>candidate.name.toLowerCase().endsWith(x))) { setError("Use a .log, .txt, .csv, or .json file."); return; } if (candidate.size>10*1024*1024) { setError("Files must be 10 MB or smaller."); return; } setError(""); setFile(candidate); }
+  return <div className="card p-8"><div onDragOver={e=>e.preventDefault()} onDrop={e=>{e.preventDefault();choose(e.dataTransfer.files[0])}} onClick={()=>ref.current?.click()} className="cursor-pointer rounded-2xl border-2 border-dashed border-slate-200 p-12 text-center hover:border-blue-400"><FileUp className="mx-auto mb-4 text-blue-600" size={38}/><h2 className="text-lg font-semibold">Drop an evidence file here</h2><p className="mt-2 text-sm text-slate-500">or click to browse · LOG, TXT, CSV, JSON · max 10 MB</p><input ref={ref} type="file" hidden accept=".log,.txt,.csv,.json" onChange={e=>choose(e.target.files?.[0]||null)}/></div>{file&&<div className="mt-5 flex items-center justify-between rounded-xl bg-slate-50 p-4 text-sm"><span><b>{file.name}</b><br/><span className="text-slate-500">{(file.size/1024).toFixed(1)} KB</span></span><button onClick={submit} disabled={busy} className="rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white disabled:opacity-60">{busy?<><LoaderCircle className="mr-2 inline animate-spin" size={15}/>Analyzing...</>:"Analyze logs"}</button></div>}{error&&<p className="mt-4 text-sm text-red-600">{error}</p>}</div>;
+}

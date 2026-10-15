@@ -1,0 +1,6 @@
+"use client";
+import { useRouter } from "next/navigation";
+import { ArrowLeft, FileSearch } from "lucide-react";
+import Link from "next/link";
+import { LogUploader } from "../../components/forensic/LogUploader";
+export default function UploadPage(){const router=useRouter(); return <><Link href="/" className="mb-6 inline-flex items-center text-sm text-slate-500"><ArrowLeft size={15} className="mr-2"/>Dashboard</Link><div className="mb-8"><div className="eyebrow mb-2">Evidence intake</div><h1 className="text-3xl font-bold">Upload system logs</h1><p className="mt-2 text-slate-500">Preserve the original bytes for SHA-256 hashing, then parse locally with transparent rules.</p></div><LogUploader onComplete={id=>router.push(`/analysis/${id}`)}/><div className="mt-6 grid gap-4 md:grid-cols-3">{["Local processing","Evidence hash","Rule-based triage"].map((item,i)=><div key={item} className="rounded-xl bg-white p-4 text-sm"><FileSearch className="mb-3 text-blue-600" size={18}/><b>{item}</b><p className="mt-1 text-xs text-slate-500">{["Files are sent only to your local FastAPI service.","The original upload receives a SHA-256 digest.","Findings include evidence event references."][i]}</p></div>)}</div></>;}

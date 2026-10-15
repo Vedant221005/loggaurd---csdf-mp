@@ -1,0 +1,9 @@
+Oct 15 10:10:00 workstation sshd[1234]: Accepted password for alice from 10.0.0.8 port 5000 ssh2
+Oct 15 10:12:00 workstation sshd[1235]: Failed password for admin from 192.168.1.25 port 52210 ssh2
+Oct 15 10:13:00 workstation sshd[1236]: Failed password for admin from 192.168.1.25 port 52211 ssh2
+Oct 15 10:14:00 workstation sshd[1237]: Failed password for admin from 192.168.1.25 port 52212 ssh2
+Oct 15 10:15:00 workstation sshd[1238]: Failed password for admin from 192.168.1.25 port 52213 ssh2
+Oct 15 10:16:00 workstation sshd[1239]: Failed password for admin from 192.168.1.25 port 52214 ssh2
+Oct 15 10:17:00 workstation sshd[1240]: Accepted password for admin from 192.168.1.25 port 52215 ssh2
+Oct 15 10:30:00 workstation sudo: alice : TTY=pts/0 ; COMMAND=/usr/bin/systemctl status ssh
+Oct 15 10:31:00 workstation sshd[1241]: Accepted publickey for bob from 10.0.0.9 port 5010 ssh2

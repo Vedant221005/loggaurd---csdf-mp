@@ -1,0 +1,7 @@
+Event ID,TimeCreated,Computer,Provider,Level,TargetUserName,IpAddress,Message
+4624,2026-10-15 10:10:00,WIN-01,Microsoft-Windows-Security-Auditing,Information,alice,10.0.0.8,An account was successfully logged on
+4625,2026-10-15 10:12:00,WIN-01,Microsoft-Windows-Security-Auditing,Failure Audit,admin,192.168.1.25,An account failed to log on
+4625,2026-10-15 10:13:00,WIN-01,Microsoft-Windows-Security-Auditing,Failure Audit,admin,192.168.1.25,An account failed to log on
+4634,2026-10-15 10:20:00,WIN-01,Microsoft-Windows-Security-Auditing,Information,alice,,An account was logged off
+4672,2026-10-15 10:30:00,WIN-01,Microsoft-Windows-Security-Auditing,Information,administrator,,Special privileges assigned to new logon
+4740,2026-10-15 10:35:00,WIN-01,Microsoft-Windows-Security-Auditing,Information,admin,192.168.1.25,A user account was locked out
